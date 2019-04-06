@@ -3,15 +3,22 @@ function ball(x, y, width, height){
   this.posY = y;
   this.width = width;
   this.height = height;
-  this.speedX = 5;
-  this.speedY = 5;
+  this.speedX = 10;
+  this.speedY = 10;
 
   this.draw = function(){
     ellipse(this.posX, this.posY, this.width, this.height);
   }
 
   this.checkBoardCollision = function(boardWidth, boardHeight){
-    if (this.posX < 0 || this.posX > boardWidth){
+
+
+    if (this.posX < 0 ){
+      this.posX = 0;
+      this.speedX = -this.speedX;
+    }
+    else if(this.posX > boardWidth){
+      this.posX = boardWidth - this.width;
       this.speedX = -this.speedX;
     }
     if (this.posY < 0 || this.posY > boardHeight){
@@ -20,6 +27,8 @@ function ball(x, y, width, height){
     //Update speed
     this.posX = this.posX + this.speedX;
     this.posY = this.posY + this.speedY;
+
+
   }
 
   this.checkPaddleCollision = function(paddle){
