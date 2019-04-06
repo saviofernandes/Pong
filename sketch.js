@@ -48,12 +48,10 @@ function draw(){
 
   //Ball movement
   ball.checkBoardCollision(boardWidth, boardHeight);
-  
-  if (ball.posX <= 0){
-    console.log("condition 1");
+
+  if (ball.posX < 0){
     paddle1.score = paddle1.score + 1;}
-  else if (ball.posX >= boardWidth){
-    console.log("conditon 2");
+  else if (ball.posX > boardWidth){
     paddle2.score = paddle2.score + 1;}
 
   ball.checkPaddleCollision(paddle1);
